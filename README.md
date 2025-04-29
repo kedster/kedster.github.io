@@ -1,10 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
-  <title>Seth Keddy</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -49,6 +48,7 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
   </style>
+  <title>Seth Keddy</title>
 </head>
 <body>
 

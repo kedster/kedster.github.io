@@ -1,77 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seth Keddy | Senior Software Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #0366d6;
+      --accent-color: #61dafb;
+      --dark-bg: #20232a;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+      color: var(--text-color);
     }
-    header, footer {
-      background-color: #20232a;
-      color: white;
-      text-align: center;
-      padding: 1em 0;
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
     }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 2em;
+
+    nav {
+      width: 240px;
+      background-color: var(--dark-bg);
+      color: #fff;
+      padding: 2rem 1rem;
+      flex-shrink: 0;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+      transition: transform 0.3s ease-in-out;
     }
-    section {
-      margin-bottom: 2em;
+
+    nav h1 {
+      font-size: 1.5rem;
+      margin: 0 0 1rem;
     }
-    h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 0.5em;
-    }
-    a {
-      color: #0366d6;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      list-style-type: none;
+
+    nav ul {
+      list-style: none;
       padding: 0;
     }
-    .card {
-      background: #fff;
-      padding: 1em;
-      margin: 1em 0;
+
+    nav li {
+      margin: 1rem 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 0.5rem 1rem;
       border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    nav a:hover, nav a.active {
+      background-color: #333;
+    }
+
+    .toggle-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    main {
+      margin-left: 240px;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    header, footer {
+      background-color: var(--dark-bg);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .badge {
+      background: green;
+      color: white;
+      padding: 0.25em 0.75em;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1000;
+      }
+
+      nav.show {
+        transform: translateX(0);
+      }
+
+      .toggle-btn {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+
+      main {
+        margin-left: 0;
+        padding-top: 4rem;
+      }
     }
   </style>
-  <title>Seth Keddy</title>
 </head>
 <body>
 
-  <header>
+<div class="layout">
+  <nav id="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
     <h1>Seth Keddy</h1>
-    <p>Senior Software Engineer | Multi-Industry | DevOps & Automation</p>
-  </header>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#social">Connect</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
 
   <main>
+    <header>
+      <h1>Seth Keddy</h1>
+      <p>Senior Software Engineer | Multi-Industry | DevOps & Automation</p>
+    </header>
 
     <section id="about">
       <h2>About Me</h2>
       <p>I’m a Senior Software Engineer focused on deploying scalable software in retail environments, experienced in PowerShell, automation, and documentation. Passionate about process improvement and ITIL-compliant service workflows.</p>
+
     </section>
 
-<section id="resume">
-  <h2>Resume</h2>
-  <p><a href="https://github.com/kedster/kedster/raw/main/Seth%20Keddy%202025.docx" target="_blank" rel="noopener noreferrer">
-    Download My Resume (DOCX)
-  </a></p>
-</section>
-
-
+    <section id="resume">
+      <h2>Resume</h2>
+      <p><a href="https://github.com/kedster/kedster/raw/main/Seth%20Keddy%202025.docx" target="_blank">📄 Download Resume</a></p>
+    </section>
 
     <section id="social">
       <h2>Connect</h2>
@@ -82,10 +195,22 @@
         <li><a href="mailto:sethkeddy@gmail.com">Email Me</a></li>
       </ul>
     </section>
+    <section id="ideas">
+<h2>Ideas & Experiments</h2>
+<ul>
+  <li><strong>Automated Backup Solution for 300+ Sites Using PowerShell</strong> - Developed an automated backup script leveraging PowerShell to ensure HIPAA compliance and data security for over 300 sites, showcasing my ability to scale backup processes for large environments.</li>
+  
+  <li><strong>ServiceNow Hardware Deployment Automation</strong> - Automated hardware deployment tasks in ServiceNow, including creating RITMs and sending email alerts for ordering parts, to improve project efficiency and ensure seamless hardware provisioning.</li>
+  
+  <li><strong>PowerBI Reporting for Server and Network Monitoring</strong> - Designed PowerBI dashboards to consolidate data from multiple monitoring systems, providing real-time insights into server health and network status, facilitating proactive system management and decision-making.</li>
 
+  <li><strong>PowerShell Script for Enterprise-Level Printer Management</strong> - Created a script to automatically check printer status, install drivers, and monitor performance across the enterprise network, ensuring smooth operation and minimizing downtime in retail environments.</li>
+  
+  <li><strong>Distributed Script Management with GitHub for Seamless Deployment</strong> - Implemented GitHub-based script management for consistent deployment across hundreds of servers, ensuring that updates and automation are deployed seamlessly across all nodes in the network.</li>
+</ul>
 
-<section id="projects">
-  <h2>Projects</h2>
+    </section>
+      <h2>Projects</h2>
 
   <div class="card">
     <h3><a href="https://github.com/kedster/RDFMapper" target="_blank">RDFMapper</a> <span style="background: green; color: white; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.8em;">Public</span></h3>
@@ -128,24 +253,6 @@ The tool operates via PowerShell, offering a more stable and efficient way to es
     <h3><a href="https://github.com/kedster/VOIPwebapp" target="_blank">VOIPwebapp</a> <span style="background: green; color: white; padding: 0.2em 0.5em; border-radius: 4px; font-size: 0.8em;">Private</span></h3>
     <p>The VOIPwebapp is a web-based calculator designed to help businesses and IT professionals estimate the bandwidth and infrastructure requirements for deploying VoIP (Voice over IP) solutions. Users can input variables such as the number of concurrent calls, codec types, and overhead to receive detailed network usage projections. Ideal for capacity planning, system design, and demonstrating ROI on VoIP deployments.</p>
   </div>
-
-</section>
-
-    <section id="ideas">
-<h2>Ideas & Experiments</h2>
-<ul>
-  <li><strong>Automated Backup Solution for 300+ Sites Using PowerShell</strong> - Developed an automated backup script leveraging PowerShell to ensure HIPAA compliance and data security for over 300 sites, showcasing my ability to scale backup processes for large environments.</li>
-  
-  <li><strong>ServiceNow Hardware Deployment Automation</strong> - Automated hardware deployment tasks in ServiceNow, including creating RITMs and sending email alerts for ordering parts, to improve project efficiency and ensure seamless hardware provisioning.</li>
-  
-  <li><strong>PowerBI Reporting for Server and Network Monitoring</strong> - Designed PowerBI dashboards to consolidate data from multiple monitoring systems, providing real-time insights into server health and network status, facilitating proactive system management and decision-making.</li>
-
-  <li><strong>PowerShell Script for Enterprise-Level Printer Management</strong> - Created a script to automatically check printer status, install drivers, and monitor performance across the enterprise network, ensuring smooth operation and minimizing downtime in retail environments.</li>
-  
-  <li><strong>Distributed Script Management with GitHub for Seamless Deployment</strong> - Implemented GitHub-based script management for consistent deployment across hundreds of servers, ensuring that updates and automation are deployed seamlessly across all nodes in the network.</li>
-</ul>
-
-    </section>
 <section id="stats" style="text-align: center; padding: 2rem;">
   <h2>GitHub Overview</h2>
 
@@ -165,12 +272,20 @@ The tool operates via PowerShell, offering a more stable and efficient way to es
     />
   </div>
 </section>
+</section>
 
+
+    <footer>
+      <p>© 2025 Seth Keddy. Built with ❤️ for documentation and automation.</p>
+    </footer>
   </main>
+</div>
 
-  <footer>
-    <p>© 2025 Your Name. Built with ❤️ for documentation and automation.</p>
-  </footer>
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>

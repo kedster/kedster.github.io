@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ServiceNow Hardware Deployment Automation | Seth Keddy</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00f5ff;
+      --secondary: #ff006e;
+      --accent: #8338ec;
+      --dark: #0a0a0a;
+      --darker: #050505;
+      --card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --glow: 0 0 20px rgba(0, 245, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Animated Background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(120deg); }
+      66% { transform: translate(-20px, 20px) rotate(240deg); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 100px;
+      padding: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 3rem 0;
+    }
+
+    .project-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
+      to { filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6)); }
+    }
+
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Content Sections */
+    .content-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .content-section:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--glow);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .section-content strong {
+      color: var(--text);
+    }
+
+    /* Lists */
+    ul {
+      margin: 1rem 0;
+      padding-left: 2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    li strong {
+      color: var(--primary);
+    }
+
+    /* Workflow Diagram */
+    .workflow-diagram {
+      background: var(--darker);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .workflow-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .workflow-step:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    .step-number {
+      background: var(--primary);
+      color: var(--dark);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin: 0 auto 1rem;
+    }
+
+    .step-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--glow);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Code Block */
+    .code-section {
+      background: var(--darker);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      overflow-x: auto;
+    }
+
+    .code-header {
+      color: var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    pre {
+      background: none;
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 245, 255, 0.1);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      color: var(--primary);
+    }
+
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+      padding: 2rem 0;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-back:hover {
+      background: var(--card);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .btn-next {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      color: var(--dark);
+      box-shadow: var(--glow);
+    }
+
+    .btn-next:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 40px rgba(0, 245, 255, 0.5);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .main-content {
+        padding: 1rem;
+        margin-top: 80px;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .workflow-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      pre {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--darker);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation"></div>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">SETH KEDDY</div>
+      <ul class="nav-links">
+        <li><a href="index.html">← Back to Portfolio</a></li>
+        <li><a href="project4.html">Next Project →</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="project-header">
+      <h1 class="project-title">ServiceNow Hardware Deployment Automation</h1>
+      <p class="project-subtitle">Revolutionary ITIL-Compliant Workflow Orchestration System</p>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🚀 Project Overview</h2>
+      <div class="section-content">
+        <p>Developed a comprehensive workflow automation system within the ServiceNow platform that revolutionized hardware deployment processes across enterprise infrastructure. This solution automated end-to-end deployment workflows, from initial request creation to final delivery confirmation, achieving a <strong>70% reduction in deployment time</strong> while eliminating manual errors through intelligent orchestration.</p>
+        <p>The system seamlessly integrated with existing ITIL frameworks, providing automated RITM (Requested Item) creation, intelligent parts ordering workflows, and comprehensive email alert systems that ensured stakeholders remained informed throughout the entire deployment lifecycle.</p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🎯 Business Challenge</h2>
+      <div class="section-content">
+        <p>Enterprise hardware deployments were plagued by inefficiencies and manual processes:</p>
+        <ul>
+          <li><strong>Manual Processing Bottlenecks:</strong> Hardware requests required multiple manual interventions, creating delays and inconsistencies</li>
+          <li><strong>Communication Gaps:</strong> Stakeholders lacked visibility into deployment status, leading to frequent status inquiries and project delays</li>
+          <li><strong>Error-Prone Workflows:</strong> Manual data entry and process handoffs resulted in ordering errors and deployment failures</li>
+          <li><strong>ITIL Compliance:</strong> Existing processes didn't fully align with ITIL best practices for change and configuration management</li>
+          <li><strong>Resource Allocation:</strong> IT staff spent excessive time on routine administrative tasks instead of strategic initiatives</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">⚡ Automated Workflow Architecture</h2>
+      <div class="workflow-diagram">
+        <h3 style="color: var(--primary); margin-bottom: 2rem;">End-to-End Deployment Automation</h3>
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-number">1</div>
+            <div class="step-title">Request Initiation</div>
+            <div class="step-description">Automated RITM creation with intelligent field validation and approval routing</div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">2</div>
+            <div class="step-title">Approval Workflow</div>
+            <div class="step-description">Dynamic approval chains based on request type, cost, and organizational hierarchy</div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">3</div>
+            <div class="step-title">Parts Ordering</div>
+            <div class="step-description">Automated vendor integration with purchase order generation and tracking</div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">4</div>
+            <div class="step-title">Inventory Management</div>
+            <div class="step-description">Real-time inventory updates with automated receipt confirmation</div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">5</div>
+            <div class="step-title">Deployment Scheduling</div>
+            <div class="step-description">Intelligent resource allocation and technician assignment</div>
+          </div>
+          <div class="workflow-step">
+            <div class="step-number">6</div>
+            <div class="step-title">Status Communication</div>
+            <div class="step-description">Automated email alerts and dashboard updates throughout lifecycle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">📊 Measurable Business Impact</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-value">70%</span>
+          <span class="metric-label">Deployment Time Reduction</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">95%</span>
+          <span class="metric-label">Error Elimination</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">500+</span>
+          <span class="metric-label">Monthly Deployments Automated</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">60%</span>
+          <span class="metric-label">Administrative Time Savings</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🔧 Technical Implementation</h2>
+      <div class="section-content">
+        <p>The solution leveraged ServiceNow's advanced workflow capabilities and integration frameworks:</p>
+        <ul>
+          <li><strong>Workflow Engine:</strong> Custom ServiceNow workflows with complex branching logic and conditional processing</li>
+          <li><strong>Integration Hub:</strong> RESTful API integrations with vendor systems, inventory management, and email platforms</li>
+          <li><strong>Business Rules:</strong> Automated field population, validation, and state transitions based on ITIL best practices</li>
+          <li><strong>Notification Framework:</strong> Dynamic email templates with personalized content and escalation logic</li>
+          <li><strong>Dashboard Creation:</strong> Real-time performance metrics and deployment status visualization</li>
+          <li><strong>Script Includes:</strong> Reusable JavaScript functions for complex business logic and data manipulation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <div class="code-header">ServiceNow Workflow Script - Automated RITM Processing</div>
+      <pre><code>// ServiceNow Business Rule - Hardware Deployment Automation
+(function executeRule(current, previous /*null when async*/) {
+    
+    // Initialize workflow variables
+    var deploymentWorkflow = new HardwareDeploymentWorkflow();
+    var notificationService = new NotificationService();
+    
+    try {
+        // Validate request and extract deployment requirements
+        if (deploymentWorkflow.validateRequest(current)) {
+            
+            // Auto-populate fields based on request type
+            current.u_deployment_priority = deploymentWorkflow.calculatePriority(current);
+            current.u_estimated_completion = deploymentWorkflow.calculateTimeline(current);
+            
+            // Trigger parts ordering workflow if approved
+            if (current.approval == 'approved') {
+                var orderingResult = deploymentWorkflow.initiatePartsOrdering({
+                    items: current.u_requested_hardware.split(','),
+                    quantity: current.u_quantity,
+                    delivery_location: current.u_delivery_location,
+                    priority: current.u_deployment_priority
+                });
+                
+                if (orderingResult.success) {
+                    current.u_order_number = orderingResult.orderNumber;
+                    current.state = 'parts_ordered';
+                    
+                    // Send confirmation notifications
+                    notificationService.sendDeploymentNotification({
+                        recipient: current.requested_for,
+                        template: 'hardware_order_confirmed',
+                        orderDetails: orderingResult
+                    });
+                    
+                    // Create deployment tasks
+                    deploymentWorkflow.createDeploymentTasks(current);
+                    
+                } else {
+                    current.state = 'ordering_failed';
+                    gs.error('Parts ordering failed: ' + orderingResult.error);
+                }
+            }
+            
+            // Update configuration management database
+            deploymentWorkflow.updateCMDB(current);
+            
+        } else {
+            current.state = 'validation_failed';
+            current.comments = 'Request validation failed. Please review requirements.';
+        }
+        
+    } catch (error) {
+        gs.error('Hardware deployment automation error: ' + error.getMessage());
+        current.state = 'automation_error';
+        
+        // Send error notification to support team
+        notificationService.sendErrorAlert({
+            error: error.getMessage(),
+            requestNumber: current.number,
+            timestamp: new GlideDateTime()
+        });
+    }
+    
+})(current, previous);
+
+// Helper Class - Hardware Deployment Workflow
+var HardwareDeploymentWorkflow = Class.create();
+HardwareDeploymentWorkflow.prototype = {
+    
+    validateRequest: function(request) {
+        // Validate required fields and business rules
+        return (request.u_requested_hardware && 
+                request.u_quantity > 0 && 
+                request.u_delivery_location);
+    },
+    
+    calculatePriority: function(request) {
+        // Business logic for priority calculation
+        if (request.u_business_critical == 'true') return 'high';
+        if (request.u_requested_for.department == 'IT') return 'medium';
+        return 'normal';
+    },
+    
+    initiatePartsOrdering: function(orderDetails) {
+        // Integration with vendor APIs for automated ordering
+        var restMessage = new sn_ws.RESTMessageV2();
+        restMessage.setEndpoint('https://vendor-api.example.com/orders');
+        restMessage.setHttpMethod('POST');
+        restMessage.setRequestBody(JSON.stringify(orderDetails));
+        
+        var response = restMessage.execute();
+        return JSON.parse(response.getBody());
+    }
+};</code></pre>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🏆 Key Achievements</h2>
+      <div class="section-content">
+        <ul>
+          <li><strong>Process Transformation:</strong> Completely eliminated manual handoffs in hardware deployment workflows</li>
+          <li><strong>ITIL Alignment:</strong> Ensured full compliance with ITIL v4 change and configuration management practices</li>
+          <li><strong>Stakeholder Satisfaction:</strong> Achieved 98% user satisfaction rating through improved communication and visibility</li>
+          <li><strong>Cost Optimization:</strong> Reduced deployment-related administrative costs by 60% through automation</li>
+          <li><strong>Scalability:</strong> System successfully handled 500+ monthly deployments with minimal performance impact</li>
+          <li><strong>Error Reduction:</strong> Achieved 95% reduction in deployment errors through automated validation and processing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🔍 Technical Architecture</h2>
+      <div class="section-content">
+        <p><strong>Platform:</strong> ServiceNow Enterprise Edition with advanced workflow capabilities</p>
+        <p><strong>Integration Layer:</strong> RESTful APIs for vendor communication, email services, and inventory management</p>
+        <p><strong>Workflow Engine:</strong> Custom ServiceNow workflows with complex conditional logic and parallel processing</p>
+        <p><strong>Data Management:</strong> Automated CMDB updates with relationship mapping and asset tracking</p>
+        <p><strong>Reporting:</strong> Real-time dashboards with deployment metrics, SLA tracking, and performance analytics</p>
+        <p><strong>Security:</strong> Role-based access controls with encrypted API communications and audit logging</p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">📈 Long-term Value</h2>
+      <div class="section-content">
+        <p>This ServiceNow automation solution delivered sustained value beyond initial implementation:</p>
+        <ul>
+          <li><strong>Process Standardization:</strong> Established consistent, repeatable deployment procedures across all business units</li>
+          <li><strong>Knowledge Capture:</strong> Automated workflows preserved institutional knowledge and best practices</li>
+          <li><strong>Continuous Improvement:</strong> Built-in analytics enabled ongoing optimization of deployment processes</li>
+          <li><strong>Vendor Relationships:</strong> Improved vendor satisfaction through automated, accurate order processing</li>
+          <li><strong>Audit Readiness:</strong> Complete audit trails and compliance documentation generated automatically</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🔧 Technical Notes</h2>
+      <div class="section-content">
+        <p><em>Implementation Approach:</em> This solution was developed using ServiceNow's native workflow capabilities, custom business rules, and integration APIs. The system was designed for scalability and maintainability, with modular components that could be easily extended or modified.</p>
+        <p><em>Best Practices:</em> Implementation followed ITIL v4 guidelines for service design and transition, ensuring alignment with enterprise service management practices and maintaining comprehensive change control throughout the deployment process.</p>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="index.html" class="btn btn-back">← Back to Portfolio</a>
+      <a href="project4.html" class="btn btn-next">Next Project: PowerBI Dashboards →</a>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling and navigation enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fade in animations
+      const sections = document.querySelectorAll('.content-section, .workflow-step, .metric-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.6s ease';
+        observer.observe(section);
+      });
+
+      // Staggered animation for workflow steps
+      const workflowSteps = document.querySelectorAll('.workflow-step');
+      workflowSteps.forEach((step, index) => {
+        step.style.transitionDelay = `${index * 0.1}s`;
+      });
+    });
+  </script>
+</body>
+</html>

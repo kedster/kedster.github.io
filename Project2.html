@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Epic EHR Integration Reporting Project</title>
+  <title>Epic EHR Integration Project | Seth Keddy</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -346,65 +346,166 @@
       <div class="logo">SETH KEDDY</div>
       <ul class="nav-links">
         <li><a href="index.html">← Back to Portfolio</a></li>
-        <li><a href="project2.html">Next Project →</a></li>
+        <li><a href="project3.html">Next Project →</a></li>
       </ul>
     </div>
   </nav>
 
- <body>
+  <div class="main-content">
+    <div class="project-header">
+      <h1 class="project-title">Epic EHR Integration Project</h1>
+      <p class="project-subtitle">Healthcare Data Processing & Real-Time Reporting Optimization</p>
+    </div>
 
-  <h1>Epic EHR Integration Reporting System</h1>
+    <div class="content-section">
+      <h2 class="section-title">🏥 Project Context</h2>
+      <div class="section-content">
+        <p>This project was developed at <strong>Quiktek</strong> to modernize and optimize how patient admission and lab result data was extracted, processed, and delivered from Epic EHR systems. The legacy process was a significant bottleneck, taking over <strong>6 hours</strong> to generate critical reports needed for care coordination and clinical decision-making.</p>
+        <p>The challenge was to build a scalable, HIPAA-compliant system that could handle high-volume healthcare data while maintaining security and reliability standards required in clinical environments.</p>
+      </div>
+    </div>
 
-  <div class="section">
-    <h2>📍 Project Context</h2>
-    <p>This project was developed at <strong>Quiktek</strong> to modernize and optimize how patient admission and lab result data was extracted, processed, and delivered. The legacy process took over <strong>6 hours</strong> to generate reports, causing bottlenecks in care coordination and data access.</p>
-    <p>After implementation, the total report turnaround time was reduced to <strong>~6 minutes</strong>, enabling near-real-time data access from Epic EHR across reporting endpoints.</p>
+    <div class="content-section">
+      <h2 class="section-title">🎯 What This System Accomplishes</h2>
+      <div class="section-content">
+        <p>This Epic EHR Integration System transforms healthcare data processing through modern architecture and automation:</p>
+        <ul>
+          <li><strong>Epic EHR Integration:</strong> Secure REST API connections using FHIR/HL7 standards for real-time data access</li>
+          <li><strong>Data Pipeline:</strong> Automated extraction of patient ADT (Admission, Discharge, Transfer) and lab results</li>
+          <li><strong>Processing Engine:</strong> SSIS-based transformation and cleansing of raw healthcare data</li>
+          <li><strong>Report Generation:</strong> SSRS-powered automated report creation with multiple output formats</li>
+          <li><strong>Secure Delivery:</strong> SFTP-based distribution to authorized healthcare consumers</li>
+          <li><strong>Monitoring & Compliance:</strong> Full audit trail and system health monitoring for HIPAA compliance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">⚙️ Technical Architecture</h2>
+      <div class="section-content">
+        <p>The system leverages cloud-native architecture and enterprise-grade technologies:</p>
+        <ul>
+          <li><strong>Containerization:</strong> Docker + Kubernetes (EKS on AWS) for scalable microservices deployment</li>
+          <li><strong>Data Integration:</strong> SSIS packages for ETL operations and data transformation workflows</li>
+          <li><strong>Reporting Platform:</strong> SSRS for automated report generation and formatting</li>
+          <li><strong>Automation:</strong> PowerShell scripts for workflow orchestration and file delivery</li>
+          <li><strong>Network Analysis:</strong> Wireshark for API troubleshooting and performance optimization</li>
+          <li><strong>High Availability:</strong> Linux HA clusters ensuring 99.9% uptime for critical reporting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <div class="code-header">PowerShell - Automated SSIS Workflow Example</div>
+      <pre><code># Healthcare Data Processing Pipeline
+# Automated SSIS package execution with monitoring
+
+param(
+    [string]$PackagePath = "C:\SSIS\EpicDataExtraction.dtsx",
+    [string]$ConfigPath = "C:\Config\Epic.dtsConfig",
+    [string]$LogPath = "C:\Logs\Epic_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
+)
+
+# HIPAA-compliant logging function
+function Write-SecureLog {
+    param([string]$Message, [string]$Level = "INFO")
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logEntry = "[$timestamp] [$Level] $Message"
+    Add-Content -Path $LogPath -Value $logEntry
+}
+
+try {
+    Write-SecureLog "Starting Epic EHR data extraction pipeline"
+    
+    # Execute SSIS package for Epic data extraction
+    $dtexecArgs = @(
+        "/FILE `"$PackagePath`"",
+        "/CONFIGFILE `"$ConfigPath`"",
+        "/REPORTING E",
+        "/LOGGER `"DTS.LogProviderTextFile;$LogPath`""
+    )
+    
+    $process = Start-Process -FilePath "dtexec.exe" -ArgumentList $dtexecArgs -Wait -PassThru
+    
+    if ($process.ExitCode -eq 0) {
+        Write-SecureLog "SSIS package executed successfully"
+        
+        # Trigger SSRS report generation
+        $reportParams = @{
+            ReportPath = "/Epic/PatientAdmissionReport"
+            Format = "PDF"
+            OutputPath = "C:\Reports\Epic_$(Get-Date -Format 'yyyyMMdd').pdf"
+        }
+        
+        Invoke-SSRSReport @reportParams
+        
+        # Secure file transfer to authorized endpoints
+        $sftpParams = @{
+            Server = $env:EPIC_SFTP_SERVER
+            Username = $env:EPIC_SFTP_USER
+            KeyFile = $env:EPIC_SSH_KEY
+            LocalPath = $reportParams.OutputPath
+            RemotePath = "/incoming/epic_reports/"
+        }
+        
+        Send-SecureFile @sftpParams
+        Write-SecureLog "Report delivered successfully via SFTP"
+        
+    } else {
+        Write-SecureLog "SSIS package failed with exit code: $($process.ExitCode)" "ERROR"
+        Send-AlertNotification -Type "SSIS_FAILURE" -Details "Epic data extraction failed"
+    }
+    
+} catch {
+    Write-SecureLog "Pipeline error: $($_.Exception.Message)" "ERROR"
+    Send-AlertNotification -Type "PIPELINE_ERROR" -Details $_.Exception.Message
+}
+
+# Cleanup and audit trail
+Write-SecureLog "Pipeline execution completed. Audit trail preserved."</code></pre>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">📊 Monitoring & Observability</h2>
+      <div class="section-content">
+        <p>Comprehensive monitoring ensures system reliability and compliance:</p>
+        <ul>
+          <li><strong>Splunk Integration:</strong> Centralized logging and HIPAA-compliant audit trails</li>
+          <li><strong>Prometheus Metrics:</strong> Real-time system performance and health monitoring</li>
+          <li><strong>Grafana Dashboards:</strong> Visual monitoring of delivery rates, processing times, and failure metrics</li>
+          <li><strong>Nagios Alerting:</strong> Proactive notifications for system issues and SLA violations</li>
+          <li><strong>Performance Analytics:</strong> Detailed insights into data processing efficiency and bottlenecks</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🚀 Results & Impact</h2>
+      <div class="section-content">
+        <p>The implementation delivered transformative improvements to healthcare data processing:</p>
+        <ul>
+          <li><strong>Performance Optimization:</strong> Reduced report processing time from 6 hours to under 6 minutes (99% improvement)</li>
+          <li><strong>Clinical Impact:</strong> Enabled near-real-time coordination between clinicians and laboratory teams</li>
+          <li><strong>Compliance Achievement:</strong> Implemented comprehensive HIPAA-compliant logging and audit system</li>
+          <li><strong>Scalability:</strong> Cloud-native architecture supports growth and additional Epic integrations</li>
+          <li><strong>Reliability:</strong> High-availability design ensures consistent report delivery for critical healthcare operations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">🔧 Technical Notes</h2>
+      <div class="section-content">
+        <p><em>Healthcare Integration:</em> This system demonstrates enterprise-grade healthcare data integration following FHIR standards and HIPAA compliance requirements. The architecture supports multiple Epic instances and can be extended to other EHR systems.</p>
+        <p><em>Disclaimer:</em> This is a representative example of work completed at Quiktek, designed to showcase technical capabilities and healthcare integration expertise. Code samples are illustrative and do not contain any protected health information (PHI) or proprietary system details.</p>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="project1.html" class="btn btn-back">← Previous: RFID Badge System</a>
+      <a href="project3.html" class="btn btn-next">Next Project →</a>
+    </div>
   </div>
-
-  <div class="section">
-    <h2>⚙️ What It Does</h2>
-    <ul>
-      <li>Integrates directly with <strong>Epic EHR</strong> using secure <code>REST APIs</code> (FHIR/HL7 standards)</li>
-      <li>Extracts key datasets like patient admission, discharge, transfer (ADT), and lab results</li>
-      <li>Feeds data into <strong>SSIS</strong> for transformation and stores in a report DB</li>
-      <li>Generates formatted reports using <strong>SSRS</strong></li>
-      <li>Automates secure file transfer to reporting consumers via <strong>SFTP</strong></li>
-      <li>Monitors system health using <strong>Prometheus</strong>, <strong>Grafana</strong>, and <strong>Splunk</strong></li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>🛠️ Technologies Used</h2>
-    <ul>
-      <li><strong>Docker + Kubernetes (EKS on AWS):</strong> Containerized and scaled each microservice and reporting component</li>
-      <li><strong>PowerShell:</strong> Automated SSIS/SSRS workflows and SFTP delivery jobs</li>
-      <li><strong>SSIS:</strong> Transformed raw patient data into clean, structured datasets</li>
-      <li><strong>SSRS:</strong> Rendered reports as PDFs/CSV for downstream delivery</li>
-      <li><strong>Wireshark:</strong> Inspected packet-level issues with secure APIs</li>
-      <li><strong>Splunk:</strong> Logged and monitored for HIPAA-compliant audit trails</li>
-      <li><strong>Nagios & Prometheus:</strong> System-level alerting and monitoring</li>
-      <li><strong>Grafana:</strong> Dashboards showing delivery rates, failures, metrics</li>
-      <li><strong>Linux HA Clusters:</strong> Redundant systems for reporting uptime</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>🚀 Results</h2>
-    <ul>
-      <li>Reduced report processing time from 6 hours to under 6 minutes</li>
-      <li>Enabled real-time coordination between clinicians and labs</li>
-      <li>Deployed HIPAA-compliant logging and monitoring system</li>
-      <li>Improved system reliability and scalability with cloud-native design</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>💡 Notes</h2>
-    <p>This project is a <strong>representative example</strong> of real work completed at Quiktek and is intended to showcase technical expertise, architecture design, and process optimization. The code and details here are illustrative and do not include protected data or internal systems.</p>
-  </div>
-
-</body>
-</html>
 
   <script>
     // Smooth scrolling and navigation enhancements

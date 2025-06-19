@@ -1,0 +1,94 @@
+<section id="omp-project" class="project-section">
+  <h2>Enterprise Systems Analyst — OMP (2014–2019)</h2>
+  <p>
+    At OMP, I worked as a Systems Analyst covering the entire enterprise IT landscape — from cybersecurity and programming to IT onboarding.  
+    We were a small but powerful IT team of 4 supporting 700 staff. I loved the challenges until the company was sold for $500 million.
+  </p>
+
+  <h3>Sample Project: RFID Badge In/Out Access System</h3>
+  <p>This sample project illustrates the type of work I completed involving hardware integration and enterprise software development.</p>
+
+  <h4>What’s involved in an RFID Badge-In/Out System?</h4>
+  <ul>
+    <li><strong>Hardware Layer:</strong> RFID reader scans badges and sends badge IDs to the application, usually via serial port (COM), USB, keyboard wedge, or network API.</li>
+    <li><strong>Software Layer:</strong> A .NET application listens for RFID inputs, processes badge IDs, and tracks entries/exits.</li>
+    <li><strong>State Tracking:</strong> Tracks whether a badge is "IN" or "OUT".</li>
+    <li><strong>Logging/Storage:</strong> Records badge scans with timestamps, user IDs, typically in a database or log file.</li>
+  </ul>
+
+  <h4>Sample C# Console App: RFID Badge In/Out (Serial Port)</h4>
+  <pre><code class="language-csharp">
+using System;
+using System.Collections.Generic;
+using System.IO.Ports;
+
+class Program
+{
+    // In-memory badge states: badgeID => true (IN) or false (OUT)
+    static Dictionary&lt;string, bool&gt; badgeStates = new();
+
+    static SerialPort serialPort;
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("RFID Badge In/Out System Starting...");
+
+        // Configure your RFID reader's COM port and settings here
+        serialPort = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
+        serialPort.DataReceived += SerialPort_DataReceived;
+
+        try
+        {
+            serialPort.Open();
+            Console.WriteLine("Listening on COM3 for RFID badge scans...");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to open serial port: {ex.Message}");
+            return;
+        }
+
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+
+        if (serialPort.IsOpen)
+            serialPort.Close();
+    }
+
+    private static void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+    {
+        try
+        {
+            string badgeId = serialPort.ReadLine().Trim();
+
+            if (string.IsNullOrEmpty(badgeId))
+                return;
+
+            ProcessBadgeScan(badgeId);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reading serial data: {ex.Message}");
+        }
+    }
+
+    private static void ProcessBadgeScan(string badgeId)
+    {
+        lock (badgeStates)
+        {
+            bool isIn = badgeStates.ContainsKey(badgeId) && badgeStates[badgeId];
+            bool newState = !isIn;
+            badgeStates[badgeId] = newState;
+
+            string stateText = newState ? "IN" : "OUT";
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            Console.WriteLine($"[{timestamp}] Badge {badgeId} scanned: {stateText}");
+            // TODO: Save event to DB or log file
+        }
+    }
+}
+  </code></pre>
+
+  <p><em>Note:</em> Adjust COM port settings to match your hardware. This is a simple demo with in-memory state and console logging.</p>
+</section>

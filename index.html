@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seth Keddy | Elite Software Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --primary: #00f5ff;
@@ -41,7 +44,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: 
+      background:
         radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
@@ -49,9 +52,19 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      33% {
+        transform: translate(30px, -30px) rotate(120deg);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+      }
     }
 
     /* Navigation */
@@ -141,8 +154,13 @@
     }
 
     @keyframes glow {
-      from { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
-      to { filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6)); }
+      from {
+        filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+      }
+
+      to {
+        filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6));
+      }
     }
 
     .hero-content .subtitle {
@@ -524,324 +542,362 @@
     }
   </style>
 </head>
+
 <body>
- <div class="bg-animation"></div>
+  <div class="bg-animation"></div>
 
- <nav>
-   <div class="nav-container">
-     <div class="logo">SETH KEDDY</div>
-     <ul class="nav-links">
-       <li><a href="#home">Home</a></li>
-       <li><a href="#about">About</a></li>
-       <li><a href="#skills">Skills</a></li>
-       <li><a href="#experience">Experience</a></li>
-       <li><a href="#projects">Projects</a></li>
-       <li><a href="#contact">Contact</a></li>
-     </ul>
-   </div>
- </nav>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">SETH KEDDY</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
- <section id="home" class="hero">
-   <div class="hero-content">
-     <h1>SETH KEDDY</h1>
-     <p class="subtitle">Senior Software Engineer</p>
-     <p class="description">
-       Elite automation architect specializing in scalable enterprise solutions, 
-       DevOps excellence, and ITIL-compliant service workflows. Transforming complex 
-       challenges into elegant, automated solutions.
-     </p>
-     <div class="cta-buttons">
-       <a href="#contact" class="btn btn-primary">Let's Connect</a>
-       <a href="https://github.com/kedster/kedster/raw/main/Seth%20Keddy%202025.docx" class="btn btn-secondary" target="_blank">Download Resume</a>
-     </div>
-   </div>
- </section>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>SETH KEDDY</h1>
+      <p class="subtitle">Senior Software Engineer</p>
+      <p class="description">
+        Elite automation architect specializing in scalable enterprise solutions,
+        DevOps excellence, and ITIL-compliant service workflows. Transforming complex
+        challenges into elegant, automated solutions.
+      </p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-primary">Let's Connect</a>
+        <a href="https://github.com/kedster/kedster/raw/main/Seth%20Keddy%202025.docx" class="btn btn-secondary"
+          target="_blank">Download Resume</a>
+      </div>
+    </div>
+  </section>
 
- <section id="about">
- <h2 class="section-title">About Me</h2>
- <div class="about-grid">
-   <div class="about-text">
-     <p>
-       Senior Software Engineer with 5+ years of experience architecting scalable automation and enterprise solutions—especially across retail environments and regulated industries like HIPAA-compliant healthcare. I specialize in modernizing complex workflows through reusable tools, intelligent orchestration, and DevOps best practices.
-     </p>
-     <p>
-       My toolkit includes robust scripting in <span class="code">PowerShell</span>, API integrations, CI/CD pipelines, and infrastructure-as-code. I design and deploy .NET services, build high-performance databases, and ensure systems run reliably 24/7—all with an ITIL mindset and a focus on measurable business impact.
-     </p>
-     <p>
-       Whether containerizing apps, crafting REST/GraphQL APIs, or mentoring engineers, my goal is the same: eliminate manual toil, advance automation-driven operations, and deliver solutions that scale and adapt.
-     </p>
-   </div>
-   <div class="about-stats">
-     <div class="stat-card">
-       <span class="stat-number">300+</span>
-       <span class="stat-label">Sites Automated</span>
-     </div>
-     <div class="stat-card">
-       <span class="stat-number">5+</span>
-       <span class="stat-label">Years Experience</span>
-     </div>
-     <div class="stat-card">
-       <span class="stat-number">100%</span>
-       <span class="stat-label">HIPAA Compliant Deployments</span>
-     </div>
-     <div class="stat-card">
-       <span class="stat-number">24/7</span>
-       <span class="stat-label">System Monitoring</span>
-     </div>
-   </div>
- </div>
-</section>
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Senior Software Engineer with 5+ years of experience architecting scalable automation and enterprise
+          solutions—especially across retail environments and regulated industries like HIPAA-compliant healthcare. I
+          specialize in modernizing complex workflows through reusable tools, intelligent orchestration, and DevOps best
+          practices.
+        </p>
+        <p>
+          My toolkit includes robust scripting in PowerShell, API integrations, CI/CD
+          pipelines, and infrastructure-as-code. I design and deploy .NET services, build high-performance databases,
+          and ensure systems run reliably 24/7—all with an ITIL mindset and a focus on measurable business impact.
+        </p>
+        <p>
+          Whether containerizing apps, crafting REST/GraphQL APIs, or mentoring engineers, my goal is the same:
+          eliminate manual toil, advance automation-driven operations, and deliver solutions that scale and adapt.
+        </p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">700+</span>
+          <span class="stat-label">Sites Automated</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">HIPAA Compliant Deployments</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">System Monitoring</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="skills">
- <h2 class="section-title">Technical Expertise</h2>
- <div class="skills-grid">
-   <div class="skill-category">
-     <h3> Automation & Scripting</h3>
-     <div class="skill-tags">
-       <span class="skill-tag">PowerShell</span>
-       <span class="skill-tag">Python</span>
-       <span class="skill-tag">Bash</span>
-       <span class="skill-tag">Workflow Orchestration</span>
-       <span class="skill-tag">API Integration (REST, GraphQL)</span>
-     </div>
-   </div>
-   <div class="skill-category">
-     <h3> DevOps & Infrastructure</h3>
-     <div class="skill-tags">
-       <span class="skill-tag">CI/CD Pipelines</span>
-       <span class="skill-tag">Infrastructure as Code</span>
-       <span class="skill-tag">Containerization (Docker/Kubernetes)</span>
-       <span class="skill-tag">SIEM, SPLUNK, GRAFANA</span>
-       <span class="skill-tag">ITIL Framework</span>
-     </div>
-   </div>
-   <div class="skill-category">
-     <h3> Application Development</h3>
-     <div class="skill-tags">
-       <span class="skill-tag">C# & .NET Core</span>
-       <span class="skill-tag">ASP.NET APIs</span>
-       <span class="skill-tag">WinForms & Windows Services</span>
-       <span class="skill-tag">JSON, XML, T-SQL</span>
-       <span class="skill-tag">PowerBI, DAX, M-Query</span>
-     </div>
-   </div>
-   <div class="skill-category">
-     <h3> Front‑end & Web</h3>
-     <div class="skill-tags">
-       <span class="skill-tag">JavaScript (Node.js, Angular)</span>
-       <span class="skill-tag">HTML5 & CSS3</span>
-       <span class="skill-tag">Flask (Python)</span>
-       <span class="skill-tag">Selenium Automation</span>
-       <span class="skill-tag">YAML, JSON</span>
-     </div>
-   </div>
-       <div class="skill-category">
-     <h3>Dashbaords and Reporting</h3>
-     <div class="skill-tags">
-       <span class="skill-tag">PowerBI</span>
-       <span class="skill-tag">Splunk</span>
-       <span class="skill-tag">Airtable</span>
-       <span class="skill-tag">Tableau</span>
-     </div>
-   </div>
- </div>
-</section>
+  <section id="skills">
+    <h2 class="section-title">Technical Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3> Automation & Scripting</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PowerShell</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">Workflow Orchestration</span>
+          <span class="skill-tag">API Integration (REST, GraphQL)</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3> DevOps & Infrastructure</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">CI/CD Pipelines</span>
+          <span class="skill-tag">Infrastructure as Code</span>
+          <span class="skill-tag">Containerization (Docker/Kubernetes)</span>
+          <span class="skill-tag">SIEM, SPLUNK, GRAFANA</span>
+          <span class="skill-tag">ITIL Framework</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3> Application Development</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">C# & .NET Core</span>
+          <span class="skill-tag">ASP.NET APIs</span>
+          <span class="skill-tag">WinForms & Windows Services</span>
+          <span class="skill-tag">JSON, XML, T-SQL</span>
+          <span class="skill-tag">PowerBI, DAX, M-Query</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3> Front‑end & Web</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">JavaScript (Node.js, Angular)</span>
+          <span class="skill-tag">HTML5 & CSS3</span>
+          <span class="skill-tag">Flask (Python)</span>
+          <span class="skill-tag">Selenium Automation</span>
+          <span class="skill-tag">YAML, JSON</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3>Dashbaords and Reporting</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PowerBI</span>
+          <span class="skill-tag">Splunk</span>
+          <span class="skill-tag">Airtable</span>
+          <span class="skill-tag">Tableau</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
- <section id="projects">
-   <h2 class="section-title">Featured Projects</h2>
-   <div class="skills-grid">
-     
-     <div class="skill-category">
-       <h3> RFID Badge In/Out System</h3>
-       <p>Enterprise hardware integration solution providing real-time access control and attendance tracking. Developed during my tenure as Enterprise Systems Analyst at OMP, supporting 700+ staff with intelligent badge state management, comprehensive audit logging, and seamless integration with existing security infrastructure.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">C# .NET</span>
-         <span class="skill-tag">Serial Communication</span>
-         <span class="skill-tag">Real-time Processing</span>
-         <span class="skill-tag">Enterprise Security</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="Project1.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
+  <section id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="skills-grid">
 
-     <div class="skill-category">
-       <h3> Automated HIPAA-Compliant Backup System</h3>
-       <p>Comprehensive PowerShell-based backup automation system deployed across 300+ retail locations. Features automated monitoring, intelligent failure recovery, and complete HIPAA compliance workflows. Reduced manual intervention by 95% while maintaining 99.9% data security compliance and enabling proactive management through real-time alerting systems.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">PowerShell</span>
-         <span class="skill-tag">API Integration</span>
-         <span class="skill-tag">HIPAA Compliance</span>
-         <span class="skill-tag">Automated Monitoring</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="Project2.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
+      <div class="skill-category">
+        <h3> RFID Badge In/Out System</h3>
+        <p>Enterprise hardware integration solution providing real-time access control and attendance tracking.
+          Developed during my tenure as Enterprise Systems Analyst at OMP, supporting 700+ staff with intelligent badge
+          state management, comprehensive audit logging, and seamless integration with existing security infrastructure.
+        </p>
+        <div class="skill-tags">
+          <span class="skill-tag">C# .NET</span>
+          <span class="skill-tag">Serial Communication</span>
+          <span class="skill-tag">Real-time Processing</span>
+          <span class="skill-tag">Enterprise Security</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="Project1.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
-     <div class="skill-category">
-       <h3> ServiceNow Hardware Deployment Automation</h3>
-       <p>Revolutionary workflow automation system within ServiceNow environment that streamlined hardware deployment processes. Automated RITM creation, parts ordering workflows, and comprehensive email alert systems. Achieved 70% reduction in deployment time while eliminating manual errors through intelligent workflow orchestration and automated status tracking across enterprise infrastructure.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">ServiceNow</span>
-         <span class="skill-tag">Workflow Automation</span>
-         <span class="skill-tag">ITIL Framework</span>
-         <span class="skill-tag">Process Optimization</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="project3.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
+      <div class="skill-category">
+        <h3> Scalable .NET WinForms CUSTOM SQL DB Backup Application</h3>
+        <p>
+          Developed a Windows Forms-based backup application in .NET, deployed on Windows 10 workstations and a Windows
+          Server 2019 environment with optional cloud scalability.
+          Designed for HIPAA-compliant data retention in healthcare retail environments, it provided seamless backup,
+          monitoring, and reporting capabilities across 300+ distributed sites.
+          The solution automated retention policies, scheduled backups, and recovery processes with minimal user input.
+          Real-time alerts and reporting dashboards reduced the workload on support teams by over 90%, while maintaining
+          99.9% uptime and audit compliance.
+        </p>
+        <div class="skill-tags">
+          <span class="skill-tag">.NET WinForms</span>
+          <span class="skill-tag">Windows Server 2019</span>
+          <span class="skill-tag">HIPAA Compliance</span>
+          <span class="skill-tag">Cloud Scaling</span>
+          <span class="skill-tag">Automated Backups</span>
+          <span class="skill-tag">Real-Time Alerting</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="ProjectWinFormsBackup.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
-     <div class="skill-category">
-       <h3> PowerBI Real-Time Monitoring Dashboards</h3>
-       <p>Comprehensive business intelligence solution consolidating data from multiple enterprise monitoring systems. Created real-time insights into server health, network performance, and system metrics through advanced PowerBI dashboards. Enabled proactive infrastructure management and reduced system downtime by 60% through predictive analytics and automated alerting.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">PowerBI</span>
-         <span class="skill-tag">DAX & M-Query</span>
-         <span class="skill-tag">Real-time Analytics</span>
-         <span class="skill-tag">Multi-System Integration</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="project4.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
 
-     <div class="skill-category">
-       <h3> Enterprise Printer Management Automation</h3>
-       <p>Intelligent PowerShell automation solution for enterprise-wide printer management across retail network infrastructure. Features automated status monitoring, driver installation workflows, and comprehensive performance tracking. Deployed across hundreds of retail locations, significantly minimizing downtime and ensuring seamless printing operations through proactive maintenance and automated troubleshooting.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">PowerShell</span>
-         <span class="skill-tag">Network Management</span>
-         <span class="skill-tag">Automated Deployment</span>
-         <span class="skill-tag">Performance Monitoring</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="project5.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
+      <div class="skill-category">
+        <h3> ServiceNow Hardware Deployment Automation</h3>
+        <p>Revolutionary workflow automation system within ServiceNow environment that streamlined hardware deployment
+          processes. Automated RITM creation, parts ordering workflows, and comprehensive email alert systems. Achieved
+          70% reduction in deployment time while eliminating manual errors through intelligent workflow orchestration
+          and automated status tracking across enterprise infrastructure.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">ServiceNow</span>
+          <span class="skill-tag">Workflow Automation</span>
+          <span class="skill-tag">ITIL Framework</span>
+          <span class="skill-tag">Process Optimization</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="project3.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
-     <div class="skill-category">
-       <h3> GitHub-Based Distributed Script Management</h3>
-       <p>Sophisticated version-controlled script management system for consistent deployment across hundreds of enterprise servers. Implemented automated versioning, intelligent rollback capabilities, and seamless update deployment workflows. Achieved 85% reduction in deployment failures while ensuring system consistency and enabling rapid, reliable script distribution across large-scale infrastructure environments.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">GitHub Actions</span>
-         <span class="skill-tag">Version Control</span>
-         <span class="skill-tag">Distributed Systems</span>
-         <span class="skill-tag">CI/CD Pipelines</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="project6.html" class="btn btn-secondary">View Project Details →</a>
-       </div>
-     </div>
+      <div class="skill-category">
+        <h3> PowerBI Real-Time Monitoring Dashboards</h3>
+        <p>Comprehensive business intelligence solution consolidating data from multiple enterprise monitoring systems.
+          Created real-time insights into server health, network performance, and system metrics through advanced
+          PowerBI dashboards. Enabled proactive infrastructure management and reduced system downtime by 60% through
+          predictive analytics and automated alerting.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">PowerBI</span>
+          <span class="skill-tag">DAX & M-Query</span>
+          <span class="skill-tag">Real-time Analytics</span>
+          <span class="skill-tag">Multi-System Integration</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="project4.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
-     <div class="skill-category">
-       <h3> WebTools Collection</h3>
-       <p>A comprehensive suite of web-based tools and utilities designed for developers and IT professionals. This collection showcases modern web development practices, clean UI/UX design, and practical functionality including network diagnostics, code formatters, and system utilities. Built with responsive design principles and optimized for cross-platform compatibility.</p>
-       <div class="skill-tags">
-         <span class="skill-tag">JavaScript</span>
-         <span class="skill-tag">HTML5/CSS3</span>
-         <span class="skill-tag">Responsive Design</span>
-         <span class="skill-tag">Developer Tools</span>
-       </div>
-       <div style="margin-top: 1rem;">
-         <a href="https://webtools.snap-view.com" target="_blank" class="btn btn-primary">Explore WebTools →</a>
-       </div>
-     </div>
+      <div class="skill-category">
+        <h3> Enterprise Printer Management Automation</h3>
+        <p>Intelligent PowerShell automation solution for enterprise-wide printer management across retail network
+          infrastructure. Features automated status monitoring, driver installation workflows, and comprehensive
+          performance tracking. Deployed across hundreds of retail locations, significantly minimizing downtime and
+          ensuring seamless printing operations through proactive maintenance and automated troubleshooting.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">PowerShell</span>
+          <span class="skill-tag">Network Management</span>
+          <span class="skill-tag">Automated Deployment</span>
+          <span class="skill-tag">Performance Monitoring</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="project5.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
-   </div>
- </section>
+      <div class="skill-category">
+        <h3> GitHub-Based Distributed Script Management</h3>
+        <p>Sophisticated version-controlled script management system for consistent deployment across hundreds of
+          enterprise servers. Implemented automated versioning, intelligent rollback capabilities, and seamless update
+          deployment workflows. Achieved 85% reduction in deployment failures while ensuring system consistency and
+          enabling rapid, reliable script distribution across large-scale infrastructure environments.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Version Control</span>
+          <span class="skill-tag">Distributed Systems</span>
+          <span class="skill-tag">CI/CD Pipelines</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="project6.html" class="btn btn-secondary">View Project Details →</a>
+        </div>
+      </div>
 
- <section id="contact">
-   <h2 class="section-title">Let's Connect</h2>
-   <div class="contact-grid">
-     <div class="contact-card">
-       <div class="contact-icon"></div>
-       <h3>LinkedIn</h3>
-       <a href="https://linkedin.com/in/seth-keddy" target="_blank">Connect with me professionally</a>
-     </div>
-     <div class="contact-card">
-       <div class="contact-icon"></div>
-       <h3>Certifications</h3>
-       <a href="https://www.credly.com/users/seth-keddy" target="_blank">View my credentials</a>
-     </div>
-     <div class="contact-card">
-       <div class="contact-icon">🔧</div>
-       <h3>GitHub</h3>
-       <a href="https://github.com/kedster" target="_blank">Explore my code</a>
-     </div>
-     <div class="contact-card">
-       <div class="contact-icon"></div>
-       <h3>Email</h3>
-       <a href="mailto:sethkeddy@gmail.com">sethkeddy@gmail.com</a>
-     </div>
-   </div>
- </section>
+      <div class="skill-category">
+        <h3> WebTools Collection</h3>
+        <p>A comprehensive suite of web-based tools and utilities designed for developers and IT professionals. This
+          collection showcases modern web development practices, clean UI/UX design, and practical functionality
+          including network diagnostics, code formatters, and system utilities. Built with responsive design principles
+          and optimized for cross-platform compatibility.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML5/CSS3</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Developer Tools</span>
+        </div>
+        <div style="margin-top: 1rem;">
+          <a href="https://webtools.snap-view.com" target="_blank" class="btn btn-primary">Explore WebTools →</a>
+        </div>
+      </div>
 
- <footer>
-   <p>© 2025 Seth Keddy • Crafted with precision and passion for excellence</p>
- </footer>
+    </div>
+  </section>
 
- <script>
-   // Smooth scrolling for navigation links
-   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-     anchor.addEventListener('click', function (e) {
-       e.preventDefault();
-       const target = document.querySelector(this.getAttribute('href'));
-       if (target) {
-         target.scrollIntoView({
-           behavior: 'smooth',
-           block: 'start'
-         });
-       }
-     });
-   });
+  <section id="contact">
+    <h2 class="section-title">Let's Connect</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon"></div>
+        <h3>LinkedIn</h3>
+        <a href="https://linkedin.com/in/seth-keddy" target="_blank">Connect with me professionally</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"></div>
+        <h3>Certifications</h3>
+        <a href="https://www.credly.com/users/seth-keddy" target="_blank">View my credentials</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🔧</div>
+        <h3>GitHub</h3>
+        <a href="https://github.com/kedster" target="_blank">Explore my code</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"></div>
+        <h3>Email</h3>
+        <a href="mailto:sethkeddy@gmail.com">sethkeddy@gmail.com</a>
+      </div>
+    </div>
+  </section>
 
-   // Active navigation highlighting
-   window.addEventListener('scroll', () => {
-     const sections = document.querySelectorAll('section');
-     const navLinks = document.querySelectorAll('.nav-links a');
-     
-     let current = '';
-     sections.forEach(section => {
-       const sectionTop = section.offsetTop;
-       const sectionHeight = section.clientHeight;
-       if (scrollY >= (sectionTop - 200)) {
-         current = section.getAttribute('id');
-       }
-     });
+  <footer>
+    <p>© 2025 Seth Keddy • Crafted with precision and passion for excellence</p>
+  </footer>
 
-     navLinks.forEach(link => {
-       link.classList.remove('active');
-       if (link.getAttribute('href') === `#${current}`) {
-         link.classList.add('active');
-       }
-     });
-   });
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
-   // Intersection Observer for animations
-   const observerOptions = {
-     threshold: 0.1,
-     rootMargin: '0px 0px -50px 0px'
-   };
+    // Active navigation highlighting
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-links a');
 
-   const observer = new IntersectionObserver((entries) => {
-     entries.forEach(entry => {
-       if (entry.isIntersecting) {
-         entry.target.style.opacity = '1';
-         entry.target.style.transform = 'translateY(0)';
-       }
-     });
-   }, observerOptions);
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
 
-   // Observe all cards and timeline items
-   document.querySelectorAll('.stat-card, .skill-category, .experience-item, .contact-card').forEach(el => {
-     el.style.opacity = '0';
-     el.style.transform = 'translateY(30px)';
-     el.style.transition = 'all 0.6s ease';
-     observer.observe(el);
-   });
- </script>
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and timeline items
+    document.querySelectorAll('.stat-card, .skill-category, .experience-item, .contact-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 </body>
+
 </html>

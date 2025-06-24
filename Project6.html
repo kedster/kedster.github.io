@@ -445,29 +445,24 @@
   <div class="content-section">
     <h2 class="section-title">Project Overview</h2>
     <div class="section-content">
-      <p><strong>ICF's In-House Reporting Solution</strong> empowers organizations to deliver energy efficiency rebates
-        in real-time, enhancing operational efficiency and customer satisfaction. Working with an existing system and
-        extending it to integrate with PowerBI, our goal was to streamline the process of editing and creating reports
-        needed to generate rebate checks from the federal government.</p>
-
-      <p>This comprehensive solution transformed manual reporting processes into an automated, scalable system capable
-        of handling high-volume data processing while maintaining accuracy and compliance with federal requirements.</p>
-      <p> In our .NET-based project, I used Visual Studio to manage and update SQL integration logic embedded within C#
-        service classes and data access layers. We maintained our codebase in GitHub, so all changes were made via
-        standard Git workflows—pulling down the latest changes through pull requests, reviewing diffs, and committing
-        structured updates.
-
-        There was no GUI or ORM tool like EF Core abstracting the SQL—everything was written as raw SQL queries or
-        stored procedure calls, integrated directly into the application code. This was intentional due to the tool’s
-        architecture, which prioritized performance and control over using an abstraction layer.
-
-        The architecture was loosely based on a layered structure—separating concerns between controllers, services, and
-        repository classes. SQL logic was centralized in a data access layer (DAL), and changes to business logic often
-        required corresponding updates to these SQL definitions.
-
-        Since the application didn’t use migrations or schema tooling, updating the SQL required full understanding of
-        the schema, query optimizations, and how C# components consumed that data. In many cases, these SQL updates were
-        critical to improving runtime efficiency and aligning business requirements with backend performance.</p>
+      <p>
+        <strong>ICF's In-House Reporting Solution</strong> empowers organizations to deliver energy efficiency rebates in real-time, enhancing operational efficiency and customer satisfaction. Working with an existing system and extending it to integrate with PowerBI, our goal was to streamline the process of editing and creating reports needed to generate rebate checks from the federal government.
+      </p>
+      <p>
+        This comprehensive solution transformed manual reporting processes into an automated, scalable system capable of handling high-volume data processing while maintaining accuracy and compliance with federal requirements.
+      </p>
+      <p>
+        In our .NET-based project, I used Visual Studio to manage and update SQL integration logic embedded within C# service classes and data access layers. We maintained our codebase in GitHub, so all changes were made via standard Git workflows—pulling down the latest changes through pull requests, reviewing diffs, and committing structured updates.
+      </p>
+      <p>
+        There was no GUI or ORM tool like EF Core abstracting the SQL—everything was written as raw SQL queries or stored procedure calls, integrated directly into the application code. This was intentional due to the tool’s architecture, which prioritized performance and control over using an abstraction layer.
+      </p>
+      <p>
+        The architecture was loosely based on a layered structure—separating concerns between controllers, services, and repository classes. SQL logic was centralized in a data access layer (DAL), and changes to business logic often required corresponding updates to these SQL definitions.
+      </p>
+      <p>
+        Since the application didn’t use migrations or schema tooling, updating the SQL required full understanding of the schema, query optimizations, and how C# components consumed that data. In many cases, these SQL updates were critical to improving runtime efficiency and aligning business requirements with backend performance.
+      </p>
     </div>
   </div>
 

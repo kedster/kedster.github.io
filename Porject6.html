@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise In House Reporting | Seth Keddy</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --primary: #00f5ff;
@@ -41,7 +44,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: 
+      background:
         radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
@@ -49,9 +52,19 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(30px, -30px) rotate(120deg); }
-      66% { transform: translate(-20px, 20px) rotate(240deg); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      33% {
+        transform: translate(30px, -30px) rotate(120deg);
+      }
+
+      66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+      }
     }
 
     /* Navigation */
@@ -145,8 +158,13 @@
     }
 
     @keyframes glow {
-      from { filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3)); }
-      to { filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6)); }
+      from {
+        filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+      }
+
+      to {
+        filter: drop-shadow(0 0 40px rgba(0, 245, 255, 0.6));
+      }
     }
 
     .project-subtitle {
@@ -411,6 +429,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="bg-animation"></div>
 
@@ -423,117 +442,168 @@
       </ul>
     </div>
   </nav>
-        <div class="content-section">
-            <h2 class="section-title">Project Overview</h2>
-            <div class="section-content">
-                <p><strong>ICF's In-House Reporting Solution</strong> empowers organizations to deliver energy efficiency rebates in real-time, enhancing operational efficiency and customer satisfaction. Working with an existing system and extending it to integrate with PowerBI, our goal was to streamline the process of editing and creating reports needed to generate rebate checks from the federal government.</p>
-                
-                <p>This comprehensive solution transformed manual reporting processes into an automated, scalable system capable of handling high-volume data processing while maintaining accuracy and compliance with federal requirements.</p>
-            </div>
-        </div>
+  <div class="content-section">
+    <h2 class="section-title">Project Overview</h2>
+    <div class="section-content">
+      <p><strong>ICF's In-House Reporting Solution</strong> empowers organizations to deliver energy efficiency rebates
+        in real-time, enhancing operational efficiency and customer satisfaction. Working with an existing system and
+        extending it to integrate with PowerBI, our goal was to streamline the process of editing and creating reports
+        needed to generate rebate checks from the federal government.</p>
 
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <span class="metric-number">1000+</span>
-                <span class="metric-label">Reports Edited and Created</span>
-            </div>
-            <div class="metric-card">
-                <span class="metric-number">85%</span>
-                <span class="metric-label">Report Generation Time Reduction</span>
-            </div>
-            <div class="metric-card">
-                <span class="metric-number">24/7</span>
-                <span class="metric-label">Automated Monitoring</span>
-            </div>
-        </div>
+      <p>This comprehensive solution transformed manual reporting processes into an automated, scalable system capable
+        of handling high-volume data processing while maintaining accuracy and compliance with federal requirements.</p>
+      <p> In our .NET-based project, I used Visual Studio to manage and update SQL integration logic embedded within C#
+        service classes and data access layers. We maintained our codebase in GitHub, so all changes were made via
+        standard Git workflows—pulling down the latest changes through pull requests, reviewing diffs, and committing
+        structured updates.
 
-        <div class="content-section">
-            <h2 class="section-title">Business Challenge</h2>
-            <div class="section-content">
-                <p>ICF faced significant challenges in managing energy efficiency rebate reporting that threatened operational efficiency and customer satisfaction:</p>
-                <ul>
-                    <li><strong>Manual Processes:</strong> Existing systems relied heavily on manual data entry and report generation, leading to inefficiencies, errors, and delays in rebate processing.</li>
-                    <li><strong>Scalability Issues:</strong> The legacy system struggled to handle increasing volumes of data and reporting requirements as the business expanded and federal programs grew.</li>
-                    <li><strong>Real-Time Reporting Needs:</strong> Clients and stakeholders required immediate access to rebate status and comprehensive reporting, which was not feasible with the existing manual setup.</li>
-                    <li><strong>Integration Gaps:</strong> Lack of seamless integration with PowerBI and other business intelligence tools limited the ability to visualize, analyze, and derive actionable insights from rebate data.</li>
-                    <li><strong>Compliance Concerns:</strong> Manual processes increased the risk of errors in federal reporting requirements, potentially impacting rebate approval and funding.</li>
-                </ul>
-            </div>
-        </div>
+        There was no GUI or ORM tool like EF Core abstracting the SQL—everything was written as raw SQL queries or
+        stored procedure calls, integrated directly into the application code. This was intentional due to the tool’s
+        architecture, which prioritized performance and control over using an abstraction layer.
 
-        <div class="content-section">
-            <h2 class="section-title">Solution Architecture</h2>
-            <div class="section-content">
-                <p>Contributed to a comprehensive .NET-based framework that revolutionized automated report management for energy efficiency rebate processing:</p>
-                
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3 class="feature-title">Automated Report Generation</h3>
-                        <p>Implemented a robust automation framework that generates, edits, and validates reports in real-time, significantly reducing manual effort and eliminating human errors in rebate calculations and federal compliance reporting.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 class="feature-title">PowerBI Integration</h3>
-                        <p>Developed seamless integration with PowerBI, enabling dynamic data visualization, real-time dashboard updates, and comprehensive analytics for stakeholders to track rebate program performance and federal funding utilization.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3 class="feature-title">Scalable Architecture</h3>
-                        <p>Designed a modular, scalable architecture that supports high volumes of rebate data processing and reporting, ensuring consistent performance and reliability as program participation grows and federal requirements evolve.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        The architecture was loosely based on a layered structure—separating concerns between controllers, services, and
+        repository classes. SQL logic was centralized in a data access layer (DAL), and changes to business logic often
+        required corresponding updates to these SQL definitions.
 
-        <div class="content-section">
-            <h2 class="section-title">Business Impact & Results</h2>
-            <div class="section-content">
-                <p>The implementation delivered transformative results across the energy efficiency rebate program:</p>
-                <ul>
-                    <li><strong>Operational Excellence:</strong> 85% reduction in report generation time, enabling faster rebate processing and improved customer satisfaction with quicker payment turnaround.</li>
-                    <li><strong>Process Efficiency:</strong> Over 1000 reports successfully automated, eliminating manual data entry errors and ensuring consistent formatting for federal compliance.</li>
-                    <li><strong>Cost Optimization:</strong> Significant reduction in administrative overhead and manual review time, allowing staff to focus on program expansion and customer service.</li>
-                    <li><strong>Compliance Achievement:</strong> 100% accuracy in federal reporting requirements with automated validation and error checking built into the system workflow.</li>
-                    <li><strong>Real-Time Visibility:</strong> 24/7 automated monitoring provides stakeholders with immediate access to program status, funding utilization, and performance metrics.</li>
-                    <li><strong>Scalability Success:</strong> System successfully handles increased program volume without proportional increase in administrative burden or processing time.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">Technical Implementation Highlights</h2>
-            <div class="section-content">
-                <p>Key technical achievements that enabled enterprise-scale success in energy efficiency rebate management:</p>
-                <ul>
-                    <li><strong>Modular .NET Architecture:</strong> Reusable components enabling consistent deployment across multiple rebate programs and federal requirements.</li>
-                    <li><strong>Robust Error Handling:</strong> Comprehensive exception management with detailed logging and automatic retry mechanisms for failed report generation.</li>
-                    <li><strong>Performance Optimization:</strong> Efficient data processing algorithms minimizing system resource impact while handling large volumes of rebate applications.</li>
-                    <li><strong>Integration Capabilities:</strong> APIs and data connectors for seamless integration with existing financial systems, customer databases, and federal reporting platforms.</li>
-                    <li><strong>Security & Compliance:</strong> Secure data handling with encryption, audit trails, and role-based access control to protect sensitive customer and financial information.</li>
-                    <li><strong>PowerBI Connectivity:</strong> Direct data pipelines to PowerBI for real-time dashboard updates and comprehensive program analytics.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2 class="section-title">Technical Notes</h2>
-            <div class="section-content">
-                <p><em>Implementation Considerations:</em> This automation framework integrates with existing ICF systems while extending capabilities to PowerBI for enhanced reporting and analytics. The solution includes comprehensive logging, automated validation, and email alerting for critical process milestones. Data security and federal compliance requirements are built into every component of the system architecture.</p>
-                
-                <p><em>Scalability Features:</em> The system architecture supports horizontal scaling to accommodate growing rebate program volumes and additional federal energy efficiency initiatives. Integration points enable seamless connectivity with financial systems, customer relationship management platforms, and federal reporting databases, ensuring long-term sustainability and adaptability.</p>
-            </div>
-        </div>
+        Since the application didn’t use migrations or schema tooling, updating the SQL required full understanding of
+        the schema, query optimizations, and how C# components consumed that data. In many cases, these SQL updates were
+        critical to improving runtime efficiency and aligning business requirements with backend performance.</p>
     </div>
+  </div>
 
-
-
-    <div class="nav-buttons">
-      <a href="index.html" class="btn btn-back">← Back to Portfolio</a>
-      <a href="Project1.html" class="btn btn-next">Next Project →</a>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <span class="metric-number">1000+</span>
+      <span class="metric-label">Reports Edited and Created</span>
     </div>
+    <div class="metric-card">
+      <span class="metric-number">85%</span>
+      <span class="metric-label">Report Generation Time Reduction</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">24/7</span>
+      <span class="metric-label">Automated Monitoring</span>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title">Business Challenge</h2>
+    <div class="section-content">
+      <p>ICF faced significant challenges in managing energy efficiency rebate reporting that threatened operational
+        efficiency and customer satisfaction:</p>
+      <ul>
+        <li><strong>Manual Processes:</strong> Existing systems relied heavily on manual data entry and report
+          generation, leading to inefficiencies, errors, and delays in rebate processing.</li>
+        <li><strong>Scalability Issues:</strong> The legacy system struggled to handle increasing volumes of data and
+          reporting requirements as the business expanded and federal programs grew.</li>
+        <li><strong>Real-Time Reporting Needs:</strong> Clients and stakeholders required immediate access to rebate
+          status and comprehensive reporting, which was not feasible with the existing manual setup.</li>
+        <li><strong>Integration Gaps:</strong> Lack of seamless integration with PowerBI and other business intelligence
+          tools limited the ability to visualize, analyze, and derive actionable insights from rebate data.</li>
+        <li><strong>Compliance Concerns:</strong> Manual processes increased the risk of errors in federal reporting
+          requirements, potentially impacting rebate approval and funding.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title">Solution Architecture</h2>
+    <div class="section-content">
+      <p>Contributed to a comprehensive .NET-based framework that revolutionized automated report management for energy
+        efficiency rebate processing:</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3 class="feature-title">Automated Report Generation</h3>
+          <p>Implemented a robust automation framework that generates, edits, and validates reports in real-time,
+            significantly reducing manual effort and eliminating human errors in rebate calculations and federal
+            compliance reporting.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">PowerBI Integration</h3>
+          <p>Developed seamless integration with PowerBI, enabling dynamic data visualization, real-time dashboard
+            updates, and comprehensive analytics for stakeholders to track rebate program performance and federal
+            funding utilization.</p>
+        </div>
+        <div class="feature-card">
+          <h3 class="feature-title">Scalable Architecture</h3>
+          <p>Designed a modular, scalable architecture that supports high volumes of rebate data processing and
+            reporting, ensuring consistent performance and reliability as program participation grows and federal
+            requirements evolve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title">Business Impact & Results</h2>
+    <div class="section-content">
+      <p>The implementation delivered transformative results across the energy efficiency rebate program:</p>
+      <ul>
+        <li><strong>Operational Excellence:</strong> 85% reduction in report generation time, enabling faster rebate
+          processing and improved customer satisfaction with quicker payment turnaround.</li>
+        <li><strong>Process Efficiency:</strong> Over 1000 reports successfully automated, eliminating manual data entry
+          errors and ensuring consistent formatting for federal compliance.</li>
+        <li><strong>Cost Optimization:</strong> Significant reduction in administrative overhead and manual review time,
+          allowing staff to focus on program expansion and customer service.</li>
+        <li><strong>Compliance Achievement:</strong> 100% accuracy in federal reporting requirements with automated
+          validation and error checking built into the system workflow.</li>
+        <li><strong>Real-Time Visibility:</strong> 24/7 automated monitoring provides stakeholders with immediate access
+          to program status, funding utilization, and performance metrics.</li>
+        <li><strong>Scalability Success:</strong> System successfully handles increased program volume without
+          proportional increase in administrative burden or processing time.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title">Technical Implementation Highlights</h2>
+    <div class="section-content">
+      <p>Key technical achievements that enabled enterprise-scale success in energy efficiency rebate management:</p>
+      <ul>
+        <li><strong>Modular .NET Architecture:</strong> Reusable components enabling consistent deployment across
+          multiple rebate programs and federal requirements.</li>
+        <li><strong>Robust Error Handling:</strong> Comprehensive exception management with detailed logging and
+          automatic retry mechanisms for failed report generation.</li>
+        <li><strong>Performance Optimization:</strong> Efficient data processing algorithms minimizing system resource
+          impact while handling large volumes of rebate applications.</li>
+        <li><strong>Integration Capabilities:</strong> APIs and data connectors for seamless integration with existing
+          financial systems, customer databases, and federal reporting platforms.</li>
+        <li><strong>Security & Compliance:</strong> Secure data handling with encryption, audit trails, and role-based
+          access control to protect sensitive customer and financial information.</li>
+        <li><strong>PowerBI Connectivity:</strong> Direct data pipelines to PowerBI for real-time dashboard updates and
+          comprehensive program analytics.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2 class="section-title">Technical Notes</h2>
+    <div class="section-content">
+      <p><em>Implementation Considerations:</em> This automation framework integrates with existing ICF systems while
+        extending capabilities to PowerBI for enhanced reporting and analytics. The solution includes comprehensive
+        logging, automated validation, and email alerting for critical process milestones. Data security and federal
+        compliance requirements are built into every component of the system architecture.</p>
+
+      <p><em>Scalability Features:</em> The system architecture supports horizontal scaling to accommodate growing
+        rebate program volumes and additional federal energy efficiency initiatives. Integration points enable seamless
+        connectivity with financial systems, customer relationship management platforms, and federal reporting
+        databases, ensuring long-term sustainability and adaptability.</p>
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="nav-buttons">
+    <a href="index.html" class="btn btn-back">← Back to Portfolio</a>
+    <a href="Project1.html" class="btn btn-next">Next Project →</a>
+  </div>
   </div>
 
   <script>
     // Smooth scrolling and navigation enhancements
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Fade in animations
       const sections = document.querySelectorAll('.content-section, .metric-card, .feature-card');
       const observer = new IntersectionObserver((entries) => {
@@ -554,4 +624,5 @@
     });
   </script>
 </body>
+
 </html>

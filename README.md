@@ -3,7 +3,7 @@
 Welcome to my GitHub! I’m **Seth Keddy**, a Senior Software Engineer specializing in **DevOps**, **automation**, and **process improvement**. I focus on scalable software solutions, particularly in retail environments.
 
 ## Technologies
-- PowerShell, Automation, DevOps
+- .NET, PowerShell, Automation, DevOps
 - ITIL, Documentation
 
 ## Current Focus

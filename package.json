@@ -1,0 +1,29 @@
+{
+  "name": "kedster-portfolio",
+  "version": "1.0.0",
+  "description": "Seth Keddy's portfolio website with Cloudflare deployment pipeline",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve ./frontend -p 3000",
+    "build": "echo 'Static site - no build step required'",
+    "preview": "npx serve ./frontend -p 4173",
+    "deploy:pages": "wrangler pages deploy frontend",
+    "deploy:worker": "wrangler deploy",
+    "wrangler:dev": "wrangler dev"
+  },
+  "keywords": [
+    "portfolio",
+    "cloudflare",
+    "pages",
+    "workers"
+  ],
+  "author": "Seth Keddy <sethkeddy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "wrangler": "^4.37.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

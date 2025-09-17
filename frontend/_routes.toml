@@ -1,0 +1,42 @@
+# Cloudflare Pages Configuration
+
+# Build settings
+[build]
+  # Since this is a static site, no build command needed
+  command = ""
+  
+  # Frontend directory contains the static files
+  publish = "frontend"
+
+# Environment variables (can be set in Cloudflare dashboard)
+[build.environment]
+  NODE_VERSION = "20"
+
+# Preview deployments
+[preview]
+  command = ""
+  publish = "frontend"
+
+# Custom headers (optional)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Custom redirects (optional)
+[[redirects]]
+  from = "/resume"
+  to = "https://github.com/kedster/kedster/raw/main/Seth%20Keddy%202025.docx"
+  status = 301
+
+[[redirects]]
+  from = "/linkedin"
+  to = "https://linkedin.com/in/seth-keddy"
+  status = 301
+
+[[redirects]]
+  from = "/github"
+  to = "https://github.com/kedster"
+  status = 301

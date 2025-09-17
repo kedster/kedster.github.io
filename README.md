@@ -94,6 +94,70 @@ I'm passionate about solving complex technical challenges and building solutions
 
 Let's connect and discuss how we can drive innovation together!
 
+## Deployment
+
+This portfolio is deployed using Cloudflare's modern web platform:
+
+### Frontend (Cloudflare Pages)
+- **Location**: `/frontend/` directory
+- **Deployment**: Automatic via GitHub Actions on push to main
+- **Features**: Global CDN, instant cache invalidation, preview deployments
+
+### Backend (Cloudflare Workers)
+- **Location**: `/backend/` directory  
+- **Deployment**: Automatic via GitHub Actions
+- **Features**: Serverless API endpoints, edge computing capabilities
+
+### Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+
+# Preview production build
+npm run preview
+
+# Deploy manually (requires Cloudflare credentials)
+npm run deploy:pages    # Deploy frontend
+npm run deploy:worker   # Deploy backend
+```
+
+### Cloudflare Setup Requirements
+
+1. **Cloudflare Account**: Sign up at [cloudflare.com](https://cloudflare.com)
+2. **API Token**: Create token with Pages:Edit and Workers:Edit permissions
+3. **GitHub Secrets**: Configure in repository settings:
+   - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token
+   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID
+
+### Project Structure
+
+```
+kedster.github.io/
+├── frontend/           # Static website files (Cloudflare Pages)
+│   ├── index.html
+│   ├── Project*.html
+│   └── _routes.toml   # Cloudflare Pages configuration
+├── backend/           # API and server logic (Cloudflare Workers)
+│   ├── src/
+│   │   └── index.js   # Worker entry point
+│   └── wrangler.toml  # Worker configuration
+├── .github/
+│   └── workflows/
+│       └── deploy.yml # Automated deployment pipeline
+└── package.json       # Project configuration
+```
+
+### Features in Development
+
+- **Contact Form API**: Backend endpoint for portfolio inquiries
+- **Analytics Integration**: Visitor tracking and project statistics  
+- **Performance Monitoring**: Real-time performance metrics
+- **Security Headers**: Enhanced security with Cloudflare's edge
+
 ---
 
 *"Eliminate manual toil, advance automation-driven operations, and deliver solutions that scale and adapt."*
